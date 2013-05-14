@@ -1,0 +1,34 @@
+﻿@model IEnumerable<MyResume.Models.BlogPostModels>
+
+@{
+    ViewBag.Title = "Blog";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <p>
+                Welcome on this web-site. <br />
+                You may walk through this site by using the links on the upper right side.
+            </p>
+        </div>
+    </section>
+}
+
+<section class="blog">
+    @foreach(var m in Model) 
+    {
+        <h2>
+            @Html.DisplayFor(item => m.Title)
+        </h2>
+        <h6>
+            Posted on @Html.DisplayFor(item =>m.DatePosted.DayOfWeek) 
+            @Html.DisplayFor(item => m.DatePosted.Month)/@Html.DisplayFor(item => m.DatePosted.Day)/@Html.DisplayFor(item => m.DatePosted.Year)
+        </h6>
+        <p>@Html.DisplayFor(item => m.Content)</p> <br />
+    }
+</section>

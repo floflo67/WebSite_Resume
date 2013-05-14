@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MyResume.Models.ProjectModels>
+
+@{
+    ViewBag.Title = "Project";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <p>
+                Welcome on this web-site. <br />
+                You may walk through this site by using the links on the upper right side.
+            </p>
+        </div>
+    </section>
+}
+
+
+<section class="project">
+    @foreach(var m in Model) 
+    {
+        <div>
+            <text class="title">
+                @Html.DisplayFor(item => m.Title)
+            </text>
+            <br />
+            <div class="listTechnologies">
+                @foreach(var n in m.TechnologiesUsed)
+                {
+                    if(n.Equals(m.TechnologiesUsed.Last()))
+                    {
+                        <text>
+                            @Html.DisplayFor(item => n) 
+                        </text>        
+                    }
+                    else
+                    {
+                        <text>
+                            @Html.DisplayFor(item => n) -
+                        </text>
+                    }
+                }
+            </div>
+            <p>
+                @Html.DisplayFor(item => m.Comment)
+                <br />
+                <br />
+
+                @if(m.Link != null)
+                {
+                    <text>
+                        Link: @Html.DisplayFor(item => m.Link)
+                    </text>
+                <br />
+                }
+
+                @if(m.LinkGitHub != null)
+                {
+                    <text>
+                        GitHub: @Html.DisplayFor(item => m.LinkGitHub)
+                    </text>
+                }
+            </p>
+        </div>
+    }
+</section>

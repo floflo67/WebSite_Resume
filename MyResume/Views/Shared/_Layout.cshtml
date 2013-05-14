@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Florian REISS - Resume</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">@Html.ActionLink("Florian REISS", "Index", "Home")</p>
+                </div>
+                <div class="float-right">
+                    @*<section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>*@
+                    <nav>
+                        <ul id="menu">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Projects", "Project", "Home")</li>
+                            <li>@Html.ActionLink("Jobs", "Job", "Home")</li>
+                            <li>@Html.ActionLink("Courses", "Course", "Home")</li>
+                            @*<li>@Html.ActionLink("Blog", "Blog", "Home")</li>*@
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <div id="leftside" class="float-left" style="margin-left:5px"></div>
+
+            <aside>
+                <h3>Aside Title</h3>
+                <p>
+                    You can follow me on any of the following:
+                </p>
+                <ul>
+                    <li>Linkedin:</li>
+                    <li>Twitter:</li>
+                    <li>Facebook:</li>
+                </ul>
+            </aside>
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - Florian REISS - Resume</p>
+                </div>
+            </div>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

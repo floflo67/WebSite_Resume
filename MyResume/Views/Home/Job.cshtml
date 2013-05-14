@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MyResume.Models.JobModels>
+
+@{
+    ViewBag.Title = "Job";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <p>
+                Welcome on this web-site. <br />
+                You may walk through this site by using the links on the upper right side.
+            </p>
+        </div>
+    </section>
+}
+
+<section class="job">
+    @foreach(var m in Model) 
+    {
+        <div>
+            <text class="title">
+                @Html.DisplayFor(item => m.Title)
+            </text>
+            <text class="titleInfo"> 
+                - @Html.DisplayFor(item => m.Company), 
+                @Html.DisplayFor(item => m.City)
+            </text> <br />
+            <text class="date">    
+                @Html.DisplayFor(item => m.StartDate.Month)/@Html.DisplayFor(item => m.StartDate.Year)
+                to @Html.DisplayFor(item => m.EndDate.Month)/@Html.DisplayFor(item => m.EndDate.Year)
+            </text>
+            <p>
+                @Html.DisplayFor(item => m.Comment)
+            </p>
+            <div>
+                Technology used:
+                <ul>
+                    @foreach(var n in m.TechnologiesUsed)
+                    {
+                        <li>
+                            @Html.DisplayFor(item => n)
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <br />
+    }
+</section>
